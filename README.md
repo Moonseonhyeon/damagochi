@@ -28,18 +28,6 @@ println("Hello");
 3. 행복하세요
 
 + 안녕
-    +Hello
-        +hi
-
-* 안녕
-    *Hello
-        *hi
-
-- 안녕
-    -Hello
-        -hi
-
-+ 안녕
   + Hello
     + hi
 
