@@ -24,8 +24,8 @@ println("Hello");
 ```
 
 1. 안녕하세요
-2. 오늘하루도
-3. 행복하세요
+2. Linda's
+3. vlog입니다
 
 + 안녕
   + Hello
