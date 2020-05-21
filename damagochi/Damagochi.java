@@ -12,6 +12,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -41,9 +42,11 @@ public class Damagochi extends JFrame {
 	private Image nightImg = null;
 	private Image dogImg = null;
 	private Image foodImg = null;
+	private Image zzzImg = null;
 	private int x, y;
 	private boolean day;
 	private int foodX;
+	private int zzzX, zzzY;
 
 	//Graphics buffg
 	
@@ -70,6 +73,7 @@ public class Damagochi extends JFrame {
 			nightImg = ImageIO.read(new File("img/night.png"));
 			dogImg = ImageIO.read(new File("img/dog.png"));
 			foodImg = ImageIO.read(new File("img/food.png"));
+			zzzImg = ImageIO.read(new File("img/zzzzz.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -102,6 +106,9 @@ public class Damagochi extends JFrame {
 		if(stat==1) {
 			g.drawImage(foodImg, foodX, 250, 50, 50, this);
 		} 
+		if (stat==3) {
+			g.drawImage(zzzImg, zzzX, zzzY, this);
+		}
 	}
 	
 	public void move1() {
@@ -219,7 +226,7 @@ public class Damagochi extends JFrame {
 					y = y +10;
 				}
 				
-				if(x<=foodX+10&&x>=foodX-10&&stat==1) {
+				if(x<=foodX+10 && x>=foodX-10 && stat==1) {
 					stat=0;
 				}
 			}
@@ -237,6 +244,16 @@ public class Damagochi extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				stat=2;
+			}
+		});
+		//잠자기
+		sleepButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				stat =3;
+				zzzX = x + 70;
+				zzzY = y - 70;
 			}
 		});
 		
@@ -266,8 +283,8 @@ class Clock implements Runnable {
 			label.setText(now);
 			String[] test = now.split(":");
 			System.out.println(test[2]);
-			int a= Integer.parseInt(test[2]);
-			if (a <= 30) {
+			int ss= Integer.parseInt(test[2]);
+			if (ss <= 30) {
 			//true 아침
 			damagochi.setDay(true);	
 			} else {
