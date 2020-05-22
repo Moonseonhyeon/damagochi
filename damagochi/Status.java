@@ -33,7 +33,15 @@ public class Status implements Runnable{
 		 
 	@Override
 		public void run() {
-			damagoc
+			//스스로 감소
+		while (true) {
+			hungry = hungry + 2;
+			strength = strength -2;
+			
+			//스레드 슬릿까지 넣기
+			
+		}
+		
 			
 		}
 }

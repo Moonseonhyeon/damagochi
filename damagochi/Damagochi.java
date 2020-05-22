@@ -85,6 +85,8 @@ public class Damagochi extends JFrame {
 		Thread tC = new Thread(new Clock(laClock, damagochi));
 		tC.start();
 
+		status = new Status();
+		
 		Thread tS = new Thread(new Status());
 		tS.start();
 
@@ -109,6 +111,8 @@ public class Damagochi extends JFrame {
 			g.drawImage(nightImg, 0, 60, getWidth(), getHeight() - 130, this);
 		}
 
+		laStatus.setText("¹è°íÇÄ : "+status.getHungry()+"  Ã¼·Â : "+status.getStrength());		
+		
 		g.drawImage(dogImg, x, y, this);
 		if (stat == 1) {
 			g.drawImage(foodImg, foodX, 250, 50, 50, this);
@@ -261,7 +265,7 @@ public class Damagochi extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-
+					repaint();
 					// ----------
 				}
 //				if (stat == 2 && e.getKeyCode() == KeyEvent.VK_UP) {
